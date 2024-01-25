@@ -1,0 +1,46 @@
+class Customer:
+    def getdata(self, name, accno, acctype, balance):
+        self.name = name
+        self.accno = accno
+        self.acctype = acctype
+        self.balance = balance
+
+    def displayCustomer(self):
+        print("Customer Name :: " ,self.name)
+        print("Customer Account No :: " , self.accno)
+        print("Customer Account type :: " , self.acctype)
+        print("Customer Balance :: " , self.balance)
+
+    def deposit(self, amount):
+        self.balance = self.balance + amount
+
+    def withdrawal(self, amount):
+        if self.balance - amount < 0:
+            print("Insufficient withdraw")
+        else:
+            self.balance = self.balance - amount
+
+
+ch = 0
+while ch != 5:
+    print("Press 1 Open account for fresh account \n")
+    print("Press 2 Deposit \n")
+    print("Press 3 Withdrawal \n")
+    print("Press 4 Account Details \n")
+    print("Press 5 Exit")
+    ch = int(input("Enter what you want :: "))
+    if ch == 1:
+        obj = Customer()
+        n = input("Enter the Account Holder name :: ")
+        no = int(input("Enter the Account Number :: "))
+        t = input("Enter the account type :: ")
+        b = int(input("Enter the amount:: "))
+        obj.getdata(n, no, t, b)
+    if ch == 2:
+        b = int(input("Enter the amount yu want to deposit :: "))
+        obj.deposit(b)
+    if ch == 3:
+        c = int(input("Enter the money you want to withdraw :: "))
+        obj.withdrawal(c)
+    if ch == 4:
+        obj.displayCustomer()
